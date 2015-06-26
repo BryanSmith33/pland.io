@@ -154,7 +154,7 @@ button:focus
 
 .map-container input
 {
-    width: 92%;
+    width: 90%;
     margin: 0;
     padding: 5px 10px;
     background: 0;
@@ -202,10 +202,6 @@ button:focus
 {
   list-style-type: none;
 }
-
-
-
-
 
 
 
