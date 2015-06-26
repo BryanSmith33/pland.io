@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html ng-app="pland">
+<head>
+	<meta charset="utf-8">
+	<meta name="description" content="A efficient way to plan your day..">
+	<meta name="viewport" content="width=device-width">
+	<!-- Facebook -->	<meta property="og:title" content="pland.io - Make the most of your day">
+	<meta property="og:description" content="A efficient way to plan your day.">
+	<meta property="og:url" content="http://www.pland.io/">
+
+	<title>pland.io</title>
+
+				<!-- Scripts -->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js"></script>
+
+		<!---CSS-->
+	<link rel="stylesheet" type="text/css" href="mystyle.css">
+
+		<!---Fonts-->
+	<link href='http://fonts.googleapis.com/css?family=Raleway:200' rel='stylesheet' type='text/css'>
+
+				<!-- Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+	<script src="map.js"></script>
+
+</head>
+<body>
+  <div id="datetime">
+    <h1> {{ date.raw | date:'hh mm ss' }} </h1>
+    <h2>{{ date.raw | date:'EEEE, MMMM dd' }}</h2>
+  </div>
+		<!-- Weather data -->
+	<div id="weather"></div>
+	</br>
+	<button class="js-geolocation" style="display: none;">Use Current Location</button>
+
+	<!-- Google map -->
+	<div id='map-canvas' ></div><br/>
+	<div>
+		<label for="address"> Address:</label>
+		<input type="text" id="address"/>
+		<button onclick="UpdateMap()">Locate</button>
+	</div>
+
+  <div class="todo-wrapper" ng-controller="todoCtrl">
+    <form>
+      <input class="add-input" placeholder="To do" type="text" ng-model="formTodoText" ng-model-instant />
+      <button class="add-btn" ng-click="addTodo()"><h2>Add</h2></button>
+    </form>
+    <h2>{{getTotalTodos()}} things to do</h2>
+    <ul>
+      <li ng-repeat="todo in todos">
+        <input type="checkbox" ng-model="todo.done" ng-click="clearCompleted()"/>
+        <span class="done-{{todo.done}}">{{todo.text}}</span>
+      </li>
+    </ul>
+  </div>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.2.1/bootstrap.min.js"></script>
+	<script src="weather.js"></script>
+	<script src="jquery.simpleWeather.min.js"></script>
+	<script src="artill_clean_icons.otf"></script>
+	<script src="todoCtrl.js"></script>
+
+
+</body>
+</html>
